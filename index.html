@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>VSTEP B1 Template Master • Học thuộc 7 template BETMA</title>
+<meta name="description" content="Học thuộc 7 template VSTEP B1 (BETMA) qua 4 bước: dịch song ngữ, gõ từng câu, điền cụm từ, gõ nguyên bài." />
+<meta name="theme-color" content="#fbf7ff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#1b1730" media="(prefers-color-scheme: dark)" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="VSTEP B1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-size='30' font-weight='800' font-family='Arial' text-anchor='middle' fill='white'%3EB1%3C/text%3E%3C/svg%3E" />
+<link rel="manifest" href="data:application/manifest+json,{"name":"VSTEP%20B1%20Template%20Master","short_name":"VSTEP%20B1","start_url":"./","display":"standalone","background_color":"%23fbf7ff","theme_color":"%23fbf7ff","icons":[{"src":"data:image/svg%2Bxml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='16'%20fill='%23a78bfa'/%3E%3Ctext%20x='32'%20y='43'%20font-size='30'%20font-weight='800'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EB1%3C/text%3E%3C/svg%3E","sizes":"any","type":"image/svg%2Bxml","purpose":"any"}]}" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23a78bfa'/%3E%3Ctext x='32' y='43' font-size='30' font-weight='800' font-family='Arial' text-anchor='middle' fill='white'%3EB1%3C/text%3E%3C/svg%3E" />
+<script>
+  // Áp dụng giao diện sáng/tối trước khi vẽ để không bị nháy màn hình
+  (function () {
+    try {
+      var t = JSON.parse(localStorage.getItem('vstep_b1_theme') || 'null');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --bg: #fbf7ff; --card: rgba(255,255,255,.80); --card-solid: #ffffff; --line: rgba(155,140,242,.16);
+    --text: #2d2a4a; --muted: #6b678c; --soft: #9a96b8;
+    --p: #9b8cf2; --p2: #7cc7f5; --p-soft: rgba(155,140,242,.10); --p-ink: #6a58c9;
+    --ok: #2f9e7a; --ok-soft: rgba(16,185,129,.13); --warn: #c27a2c; --warn-soft: rgba(245,158,11,.16);
+    --bad: #e0607e; --bad-soft: rgba(239,68,68,.12);
+    --code-bg: #3a3361; --code-text: #e8ebff; --code-dim: #6b7399;
+    --shadow: 0 18px 40px -22px rgba(40,50,140,.35), 0 2px 6px rgba(40,50,140,.05);
+    --glow: 0 10px 28px -8px rgba(155,140,242,.55);
+    --aur: .45;
+    --sat: env(safe-area-inset-top, 0px); --sab: env(safe-area-inset-bottom, 0px);
+  }
+  [data-theme="dark"] {
+    --bg: #1b1730; --card: rgba(39,33,66,.78); --card-solid: #272142; --line: rgba(179,168,247,.18);
+    --text: #f3efff; --muted: #bdb7e0; --soft: #8c86b4;
+    --p: #b3a8f7; --p2: #7cc7f5; --p-soft: rgba(179,168,247,.16); --p-ink: #c7d2fe;
+    --ok: #34d399; --ok-soft: rgba(52,211,153,.15); --warn: #fbbf24; --warn-soft: rgba(251,191,36,.15);
+    --bad: #f87171; --bad-soft: rgba(248,113,113,.15);
+    --code-bg: #130f26; --code-text: #eef0ff; --code-dim: #5d6590;
+    --shadow: 0 18px 40px -22px rgba(0,0,0,.8), 0 2px 6px rgba(0,0,0,.3);
+    --glow: 0 10px 30px -8px rgba(179,168,247,.5);
+    --aur: .28;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; min-height: 100vh; min-height: 100dvh;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; line-height: 1.55;
+  }
+  button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+  input, textarea { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--p); outline-offset: 2px; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace; }
+
+  /* ---------- Nền Aurora ---------- */
+  .aurora { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .aurora i { position: absolute; border-radius: 50%; filter: blur(60px); opacity: var(--aur); will-change: transform; transform: translateZ(0); animation: drift 30s ease-in-out infinite alternate; }
+  .aurora i:nth-child(1) { width: 50vmax; height: 50vmax; left: -14vmax; top: -18vmax; background: #b3a8f7; }
+  .aurora i:nth-child(2) { width: 42vmax; height: 42vmax; right: -12vmax; top: 8vmax; background: #7cc7f5; animation-duration: 28s; }
+  .aurora i:nth-child(3) { width: 38vmax; height: 38vmax; left: 25vmax; bottom: -20vmax; background: #f4a9e6; animation-duration: 25s; }
+  @keyframes drift { to { transform: translate3d(5vmax, 4vmax, 0) scale(1.12); } }
+
+  /* ---------- Thanh trên cùng ---------- */
+  .topbar { position: sticky; top: 0; z-index: 40; padding-top: var(--sat);
+    background: color-mix(in srgb, var(--card-solid) 72%, transparent); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    border-bottom: 1px solid var(--line); }
+  .topbar-in { max-width: 1280px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+  .brand { display: flex; align-items: center; gap: 11px; min-width: 0; flex: 1; }
+  .logo { width: 42px; height: 42px; border-radius: 13px; flex: none; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 17px;
+    background: linear-gradient(135deg, #9b8cf2, #7cc7f5); box-shadow: var(--glow); }
+  .brand h1 { margin: 0; font-size: 15.5px; font-weight: 800; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .brand p { margin: 0; font-size: 11.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stats { display: flex; gap: 6px; }
+  .stat { display: inline-flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 12px; font-size: 12px; color: var(--muted);
+    background: var(--p-soft); border: 1px solid var(--line); white-space: nowrap; }
+  .stat b { color: var(--text); font-weight: 700; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-size: 17px; background: var(--p-soft); border: 1px solid var(--line); transition: transform .15s, background .2s; flex: none; }
+  .icon-btn:hover { background: color-mix(in srgb, var(--p) 20%, transparent); transform: translateY(-1px); }
+  .icon-btn:active { transform: scale(.94); }
+
+  /* ---------- Khung chính ---------- */
+  .layout { max-width: 1280px; margin: 0 auto; padding: 18px 16px calc(28px + var(--sab)); display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 20px; align-items: start; }
+  .side { position: sticky; top: calc(76px + var(--sat)); display: flex; flex-direction: column; gap: 14px; max-height: calc(100dvh - 92px - var(--sat)); overflow-y: auto; padding: 2px; scrollbar-width: thin; }
+  .card { contain: layout style; background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow);
+    }
+  .pad { padding: 18px; }
+  .eyebrow { margin: 0 0 10px; font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--soft); }
+
+  /* Tổng tiến độ */
+  .overall { display: flex; align-items: center; gap: 14px; }
+  .ring { width: 74px; height: 74px; flex: none; position: relative; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring circle { fill: none; stroke-width: 8; }
+  .ring .bg { stroke: var(--p-soft); }
+  .ring .fg { stroke: url(#ringGrad); stroke-linecap: round; stroke-dasharray: 213.6; stroke-dashoffset: 213.6; transition: stroke-dashoffset .8s cubic-bezier(.2,.8,.2,1); }
+  .ring span { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 800; font-size: 16px; }
+  .overall h3 { margin: 0; font-size: 15px; font-weight: 800; }
+  .overall p { margin: 2px 0 0; font-size: 12px; color: var(--muted); }
+
+  /* Danh sách template */
+  .tpl-list { display: flex; flex-direction: column; gap: 8px; }
+  .tpl { width: 100%; text-align: left; padding: 11px 12px; border-radius: 16px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--card-solid) 70%, transparent); transition: transform .18s, box-shadow .2s, border-color .2s, background .2s; position: relative; }
+  .tpl:hover { transform: translateX(3px); border-color: color-mix(in srgb, var(--p) 45%, transparent); }
+  .tpl.on { background: linear-gradient(135deg, #9b8cf2, #78b0f2); border-color: transparent; color: #fff; box-shadow: var(--glow); }
+  .tpl .code { font-size: 10px; font-weight: 800; letter-spacing: .05em; padding: 2px 7px; border-radius: 7px; }
+  .tpl .code.es { background: rgba(59,130,246,.15); color: #2563eb; }
+  .tpl .code.em { background: rgba(168,85,247,.16); color: #9333ea; }
+  [data-theme="dark"] .tpl .code.es { color: #7cb5ff; } [data-theme="dark"] .tpl .code.em { color: #d3a4ff; }
+  .tpl.on .code { background: rgba(255,255,255,.22); color: #fff; }
+  .tpl .nm { font-size: 13.5px; font-weight: 700; margin-top: 3px; line-height: 1.3; }
+  .tpl .meta { flex: 1; min-width: 0; }
+  .dots { display: flex; gap: 3px; margin-top: 6px; }
+  .dots i { width: 14px; height: 4px; border-radius: 4px; background: var(--p-soft); }
+  .dots i.f { background: linear-gradient(90deg, #34d399, #10b981); }
+  .tpl.on .dots i { background: rgba(255,255,255,.28); } .tpl.on .dots i.f { background: #fff; }
+  .tpl .check { font-size: 16px; }
+
+  .tip { background: linear-gradient(135deg, rgba(251,191,36,.16), rgba(251,146,60,.10)); border-color: rgba(245,158,11,.3); }
+  .tip h3 { margin: 0 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--warn); }
+  .tip ul { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 8px; font-size: 12.5px; color: var(--muted); }
+  .tip b { color: var(--text); }
+  code { font-family: 'JetBrains Mono', monospace; font-size: .92em; padding: 1px 6px; border-radius: 6px; background: var(--p-soft); }
+
+  /* ---------- Đầu mỗi template ---------- */
+  .main { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .head { padding: 20px; }
+  .head-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+  .badges { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .badge { padding: 3px 11px; border-radius: 99px; font-size: 11.5px; font-weight: 800; background: var(--p-soft); color: var(--p-ink); }
+  .badge.st { background: var(--p-soft); color: var(--muted); font-weight: 600; }
+  .badge.st.ok { background: var(--ok-soft); color: var(--ok); font-weight: 800; }
+  .head h2 { margin: 0; font-size: clamp(19px, 2.6vw, 25px); font-weight: 800; letter-spacing: -.02em; line-height: 1.25; }
+  .head h2 em { font-style: normal; background: linear-gradient(135deg, #9b8cf2, #7cc7f5); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .head p { margin: 6px 0 0; font-size: 13.5px; color: var(--muted); max-width: 70ch; }
+  .head-act { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 15px; border-radius: 13px; font-size: 13px; font-weight: 700; border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--card-solid) 75%, transparent); transition: transform .15s, box-shadow .2s, background .2s; white-space: nowrap; }
+  .btn:hover { transform: translateY(-1px); background: var(--card-solid); }
+  .btn:active { transform: scale(.97); }
+  .btn.primary { background: linear-gradient(135deg, #9b8cf2, #78b0f2); color: #fff; border-color: transparent; box-shadow: var(--glow); }
+  .btn.primary:hover { filter: brightness(1.08); background: linear-gradient(135deg, #9b8cf2, #78b0f2); }
+  .btn.ok { background: var(--ok-soft); color: var(--ok); border-color: color-mix(in srgb, var(--ok) 35%, transparent); }
+  .btn.ok.on { background: linear-gradient(135deg, #10b981, #059669); color: #fff; border-color: transparent; }
+  .btn.warn.on { background: linear-gradient(135deg, #f59e0b, #ea580c); color: #fff; border-color: transparent; }
+  .btn.sel { background: var(--p); color: #fff; border-color: transparent; }
+  .btn.sm { padding: 7px 11px; font-size: 12px; border-radius: 11px; }
+  .btn.lg { padding: 13px 20px; font-size: 14px; }
+
+  /* Tab 4 bước (trên mobile chuyển thành thanh dưới cùng) */
+  .modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .mode { text-align: left; padding: 11px 13px; border-radius: 16px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card-solid) 60%, transparent); transition: all .2s; display: flex; flex-direction: column; gap: 2px; }
+  .mode:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--p) 45%, transparent); }
+  .mode .st { font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--p); }
+  .mode:nth-child(3) .st { color: #d97706; } .mode:nth-child(4) .st { color: var(--ok); }
+  .mode .nm { font-size: 13.5px; font-weight: 700; }
+  .mode .short { display: none; }
+  .mode.on { background: linear-gradient(135deg, #9b8cf2, #78b0f2); color: #fff; border-color: transparent; box-shadow: var(--glow); }
+  .mode.on .st { color: rgba(255,255,255,.8); }
+  .mode .tick { display: none; }
+  .mode.done .nm::after { content: ' ✓'; color: var(--ok); }
+  .mode.on.done .nm::after { color: #fff; }
+
+  /* ---------- Không gian làm việc ---------- */
+  .work { padding: 22px; min-height: 440px; scroll-margin-top: calc(84px + var(--sat)); animation: rise .35s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .bar h3 { margin: 0; font-size: 15.5px; font-weight: 800; }
+  .bar p { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .stack { display: grid; gap: 12px; }
+
+  .callout { display: flex; gap: 11px; padding: 13px 15px; border-radius: 16px; font-size: 13px; font-weight: 500; line-height: 1.5; }
+  .callout.purple { background: rgba(168,85,247,.12); border: 1px solid rgba(168,85,247,.28); }
+  .callout.blue { background: rgba(59,130,246,.10); border: 1px solid rgba(59,130,246,.25); }
+  .callout .ic { font-size: 18px; line-height: 1.3; }
+  details.tipbox { border-radius: 16px; background: var(--warn-soft); border: 1px solid rgba(245,158,11,.3); padding: 12px 15px; font-size: 13px; }
+  details.tipbox summary { cursor: pointer; font-weight: 800; color: var(--warn); list-style: none; }
+  details.tipbox summary::-webkit-details-marker { display: none; }
+  details.tipbox ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
+
+  /* Mode 1 */
+  .s-card { padding: 16px; border-radius: 18px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card-solid) 62%, transparent); transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .s-card:hover { box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--p) 35%, transparent); }
+  .s-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 9px; flex-wrap: wrap; }
+  .tag { font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 9px; border-radius: 8px; background: var(--p-soft); color: var(--p-ink); }
+  .en { font-size: 16.5px; font-weight: 600; line-height: 1.7; cursor: pointer; }
+  .vi { margin-top: 6px; font-size: 14px; color: var(--muted); cursor: pointer; }
+  .ph { display: inline-block; padding: 1px 9px; margin: 0 2px; border-radius: 8px; font-size: .86em; font-weight: 700; background: var(--warn-soft); color: var(--warn); border: 1px dashed rgba(245,158,11,.55); }
+  .mask, .vi.masked { filter: blur(7px); transition: filter .25s; user-select: none; }
+  .s-card.reveal .mask, .en:hover .mask, .s-card.reveal .vi.masked, .vi.masked:hover { filter: none; }
+  .hook { margin-top: 11px; padding-top: 10px; border-top: 1px dashed var(--line); display: flex; gap: 8px; font-size: 12.8px; font-weight: 500; color: var(--ok); }
+  .ibtn { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--p-soft); transition: transform .15s; }
+  .ibtn:hover { transform: scale(1.08); } .ibtn:active { transform: scale(.92); }
+
+  /* Mode 2 */
+  .chips { display: flex; gap: 6px; overflow-x: auto; padding: 2px 0 6px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .sn { flex: none; width: 34px; height: 34px; border-radius: 11px; font-size: 13px; font-weight: 700; background: var(--p-soft); color: var(--muted); border: 1px solid transparent; transition: all .15s; }
+  .sn.on { background: linear-gradient(135deg, #9b8cf2, #78b0f2); color: #fff; box-shadow: var(--glow); }
+  .progress { height: 7px; border-radius: 99px; background: var(--p-soft); overflow: hidden; }
+  .progress i { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, #9b8cf2, #7cc7f5, #34d399); transition: width .4s ease; }
+  .prompt { padding: 16px 18px; border-radius: 18px; background: linear-gradient(135deg, rgba(59,130,246,.12), rgba(155,140,242,.10)); border: 1px solid rgba(155,140,242,.25); }
+  .prompt .lb { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--p); }
+  .prompt .tx { margin-top: 4px; font-size: 16px; font-weight: 700; }
+  .prompt .nt { margin-top: 6px; font-size: 12px; color: var(--muted); }
+  .term { padding: 18px 20px; border-radius: 18px; background: var(--code-bg); color: var(--code-text); font-size: clamp(15px, 2.2vw, 19px); line-height: 1.8; letter-spacing: .01em; min-height: 76px; word-break: break-word;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 14px 30px -18px rgba(0,0,0,.6); position: relative; }
+  .term::before { content: ''; position: absolute; top: 14px; left: 14px; }
+  .c-ok { color: #34d399; } .c-bad { color: #fff; background: #dc2626; border-radius: 3px; }
+  .c-todo { color: var(--code-dim); }
+  .cursor { display: inline-block; width: 2px; height: 1.15em; background: #b3a8f7; vertical-align: text-bottom; animation: blink 1s steps(1) infinite; margin-left: 1px; }
+  .c-cur { border-left: 2px solid #b3a8f7; animation: blink 1s steps(1) infinite; margin-left: -1px; }
+  @keyframes blink { 50% { border-color: transparent; background: transparent; } }
+  .ghost { color: var(--code-dim); font-style: italic; font-size: .8em; }
+  .hintline { margin-top: 10px; font-size: 13px; color: #fbbf24; border-top: 1px dashed rgba(255,255,255,.14); padding-top: 9px; }
+  .field { width: 100%; padding: 15px 16px; border-radius: 16px; border: 2px solid color-mix(in srgb, var(--p) 40%, transparent); background: var(--card-solid); font-size: 16px; outline: none; transition: border-color .2s, box-shadow .2s; }
+  .field:focus { border-color: var(--p); box-shadow: 0 0 0 4px var(--p-soft); }
+  textarea.field { resize: vertical; line-height: 1.7; min-height: 280px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+  .meters { display: flex; gap: 14px; font-size: 12.5px; font-weight: 600; color: var(--muted); flex-wrap: wrap; }
+  .meters b { color: var(--text); }
+  .switch { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--muted); cursor: pointer; user-select: none; }
+  .switch input { appearance: none; width: 38px; height: 22px; border-radius: 99px; background: var(--p-soft); border: 1px solid var(--line); position: relative; transition: background .2s; cursor: pointer; margin: 0; }
+  .switch input::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--soft); transition: transform .2s, background .2s; }
+  .switch input:checked { background: var(--p); }
+  .switch input:checked::after { transform: translateX(16px); background: #fff; }
+  .kbd { display: inline-block; padding: 1px 7px; border-radius: 6px; border: 1px solid var(--line); background: var(--p-soft); font-size: 11px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .hide-touch { }
+
+  /* Mode 3 */
+  .q-card { padding: 15px 16px; border-radius: 18px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card-solid) 62%, transparent); }
+  .q-card .v { font-size: 13.5px; font-weight: 700; color: var(--p-ink); margin-bottom: 8px; }
+  .q-card .e { font-size: 15.5px; line-height: 2.2; }
+  .blank-w { display: inline-flex; flex-direction: column; vertical-align: middle; max-width: 100%; margin: 2px 3px; }
+  .blank { padding: 6px 10px; border-radius: 11px; border: 2px solid color-mix(in srgb, var(--p) 40%, transparent); background: var(--p-soft); font-family: 'JetBrains Mono', monospace; font-size: 15px; outline: none; max-width: 100%; transition: border-color .2s, background .2s; }
+  .blank:focus { border-color: var(--p); background: var(--card-solid); }
+  .blank.ok { border-color: var(--ok); background: var(--ok-soft); color: var(--ok); font-weight: 700; }
+  .blank.bad { border-color: var(--bad); background: var(--bad-soft); color: var(--bad); }
+  .ans { font-size: 12px; font-weight: 700; color: var(--ok); margin-top: 3px; }
+  .score { padding: 13px 16px; border-radius: 16px; font-weight: 800; font-size: 14.5px; background: var(--p-soft); }
+  .score.good { background: var(--ok-soft); color: var(--ok); }
+
+  /* Mode 4 */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .outline { padding: 16px 18px; border-radius: 18px; background: var(--warn-soft); border: 1px solid rgba(245,158,11,.3); max-height: 420px; overflow-y: auto; }
+  .outline h4 { margin: 0 0 10px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--warn); position: sticky; top: -16px; background: inherit; padding: 4px 0; }
+  .outline ol { margin: 0; padding-left: 20px; display: grid; gap: 9px; font-size: 13.8px; font-weight: 500; }
+  .result { margin-top: 16px; padding: 18px; border-radius: 20px; border: 2px solid var(--line); background: var(--p-soft); animation: rise .3s ease both; }
+  .result.good { border-color: var(--ok); background: var(--ok-soft); }
+  .result .big { font-size: 34px; font-weight: 800; letter-spacing: -.02em; }
+  .diff { margin-top: 12px; padding: 14px; border-radius: 14px; background: var(--code-bg); color: var(--code-text); font-size: 14px; line-height: 2; }
+  .diff .m { color: #34d399; } .diff .x { color: #f87171; text-decoration: underline wavy #f87171; text-underline-offset: 4px; }
+
+  /* Toast, modal, confetti */
+  #toast { position: fixed; left: 50%; bottom: calc(24px + var(--sab)); z-index: 90; transform: translate(-50%, 30px); opacity: 0; pointer-events: none;
+    display: flex; align-items: center; gap: 10px; max-width: min(92vw, 440px); padding: 12px 18px; border-radius: 16px; font-size: 13.5px; font-weight: 600;
+    background: #0f1535; color: #fff; box-shadow: 0 20px 40px -12px rgba(0,0,0,.5); transition: all .3s cubic-bezier(.2,.8,.2,1); }
+  [data-theme="dark"] #toast { background: #eef0ff; color: #0f1535; }
+  #toast.show { transform: translate(-50%, 0); opacity: 1; }
+  #fx { position: fixed; inset: 0; z-index: 80; pointer-events: none; width: 100%; height: 100%; }
+  .modal { position: fixed; inset: 0; z-index: 70; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(8,10,28,.55); backdrop-filter: blur(6px); }
+  .modal.open { display: flex; animation: fade .2s ease; }
+  @keyframes fade { from { opacity: 0; } }
+  .sheet { width: 100%; max-width: 520px; max-height: 90dvh; overflow-y: auto; padding: 22px; border-radius: 26px; background: var(--card-solid); border: 1px solid var(--line); box-shadow: 0 40px 80px -20px rgba(0,0,0,.5); animation: rise .3s ease; }
+  .sheet h3 { margin: 0; font-size: 18px; font-weight: 800; }
+  .sheet ol { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 13.5px; color: var(--muted); }
+  .sheet .box { margin-top: 14px; padding: 14px 16px; border-radius: 16px; background: var(--p-soft); border: 1px solid var(--line); }
+  .sheet .box b.t { color: var(--text); font-size: 13.5px; }
+  .sheet a { color: var(--p); font-weight: 700; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1023px) {
+    .layout { grid-template-columns: 1fr; gap: 14px; padding-top: 12px; }
+    .side { position: static; max-height: none; overflow: visible; gap: 10px; }
+    .side .overall-card, .side .tip { display: none; }
+    .tpl-list { flex-direction: row; overflow-x: auto; scroll-snap-type: x proximity; padding: 2px 2px 8px; scrollbar-width: none; margin: 0 -4px; }
+    .tpl-list::-webkit-scrollbar { display: none; }
+    .tpl { flex: none; width: 178px; scroll-snap-align: start; }
+    .tpl:hover { transform: none; }
+    .tpl .check { position: absolute; top: 8px; right: 9px; font-size: 14px; }
+    .side .card.pad { padding: 12px; background: transparent; border: 0; box-shadow: none; backdrop-filter: none; }
+    .side .eyebrow { padding-left: 4px; }
+  }
+  @media (max-width: 767px) {
+    .topbar-in { padding: 8px 12px; gap: 8px; }
+    .brand p { display: none; }
+    .logo { width: 38px; height: 38px; font-size: 15px; border-radius: 12px; }
+    .brand h1 { font-size: 14px; }
+    .stat { padding: 5px 8px; font-size: 11.5px; } .stat .lbl { display: none; }
+    .icon-btn { width: 36px; height: 36px; }
+    .layout { padding: 10px 10px calc(96px + var(--sab)); }
+    .head { padding: 16px; } .work { padding: 16px; border-radius: 20px; min-height: 380px; }
+    .head-act { width: 100%; } .head-act .btn { flex: 1; }
+    /* Thanh 4 bước cố định dưới đáy */
+    .modes { position: fixed; z-index: 45; left: 10px; right: 10px; bottom: calc(10px + var(--sab)); margin: 0; padding: 6px; gap: 4px; border: 1px solid var(--line); border-radius: 22px;
+      background: color-mix(in srgb, var(--card-solid) 82%, transparent); backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5); box-shadow: 0 18px 40px -10px rgba(20,25,80,.45); }
+    .mode { align-items: center; text-align: center; padding: 8px 2px 7px; border-radius: 17px; border-color: transparent; background: transparent; gap: 1px; }
+    .mode:hover { transform: none; }
+    .mode .st, .mode .nm .long { display: none; }
+    .mode .short { display: block; font-size: 10.5px; font-weight: 700; }
+    .mode .nm { font-size: 20px; line-height: 1.1; display: flex; flex-direction: column; align-items: center; }
+    .mode.done .nm::after { content: ''; }
+    .mode .tick { display: none; }
+    .mode.done .short::after { content: ' ✓'; }
+    .two { grid-template-columns: 1fr; }
+    .outline { max-height: 240px; }
+    textarea.field { min-height: 220px; }
+    .en { font-size: 15.5px; } .q-card .e { font-size: 15px; }
+    #toast { bottom: calc(96px + var(--sab)); }
+    .hide-touch { display: none !important; }
+    .bar .row .btn { flex: 1; }
+  }
+  @media (max-width: 380px) { .stats .stat:nth-child(3) { display: none; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+  @media print { .aurora, .topbar, .side, .modes, #toast, #fx { display: none !important; } .layout { display: block; } }
+
+  /* ---- Nâng cấp pastel + mượt ---- */
+  body { background: linear-gradient(160deg,#fff1f8 0%,#f3eeff 45%,#e9f6ff 100%) fixed; }
+  [data-theme="dark"] body { background: linear-gradient(160deg,#241c3f 0%,#1b1730 55%,#162338 100%) fixed; }
+  .card { border-radius: 24px; border-color: rgba(255,255,255,.7); box-shadow: 0 14px 34px -18px rgba(155,140,242,.45), 0 2px 8px rgba(244,169,230,.12); }
+  [data-theme="dark"] .card { border-color: var(--line); }
+  .logo, .tpl.on, .btn.primary { background: linear-gradient(135deg,#a78bfa,#7cc7f5) !important; }
+  .tpl, .btn, .mode, .icon-btn, .stat { transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s, background .2s; }
+  .btn:hover, .mode:hover { transform: translateY(-2px); }
+  .btn:active, .mode:active, .tpl:active { transform: scale(.97); }
+  .work, .card, .tpl, .stat { will-change: auto; }
+  @media (hover:none) { .aurora i { animation: none; } }
+  @media (max-width: 767px) { .topbar { backdrop-filter: blur(10px); } }
+  ::selection { background: #e6dcff; }
+  ::-webkit-scrollbar { width: 8px; height: 8px } ::-webkit-scrollbar-thumb { background: #d6caff; border-radius: 8px }
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9b8cf2"/><stop offset="1" stop-color="#34d399"/></linearGradient></defs></svg>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <div class="logo">B1</div>
+      <div style="min-width:0">
+        <h1>VSTEP B1 Template Master</h1>
+        <p>Chuẩn BETMA • Dịch song ngữ &amp; luyện đánh máy</p>
+      </div>
+    </div>
+    <div class="stats" aria-label="Thống kê">
+      <span class="stat" title="Số template đã thuộc">🏅 <b id="st-m">0/7</b></span>
+      <span class="stat" title="Chuỗi ngày học liên tục">🔥 <b id="st-s">0</b><span class="lbl"> ngày</span></span>
+      <span class="stat" title="Kỷ lục tốc độ gõ">⚡ <b id="st-w">0</b><span class="lbl"> WPM</span></span>
+    </div>
+    <button class="icon-btn" onclick="toggleTheme()" id="btn-theme" aria-label="Đổi giao diện sáng/tối" title="Sáng / Tối">🌙</button>
+    <button class="icon-btn" onclick="openModal()" aria-label="Tải về &amp; đưa lên GitHub" title="Tải về &amp; đưa lên GitHub">⬇️</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="side">
+    <div class="card pad overall-card">
+      <div class="overall">
+        <div class="ring"><svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="34"/><circle class="fg" id="ring-fg" cx="40" cy="40" r="34"/></svg><span id="ring-txt">0%</span></div>
+        <div><h3>Tiến độ tổng</h3><p id="ring-sub">Hoàn thành 0/28 chặng</p></div>
+      </div>
+    </div>
+
+    <div class="card pad">
+      <h2 class="eyebrow">7 template BETMA</h2>
+      <div class="tpl-list" id="tpl-list"></div>
+    </div>
+
+    <div class="card pad tip">
+      <h3>⚡ Bí kíp nhớ siêu tốc</h3>
+      <ul>
+        <li><b>1. Phần nền cố định:</b> khung xương tiếng Anh cần gõ thuộc 100%.</li>
+        <li><span class="ph">[Ngoặc vuông]</span> là chỗ điền từ khóa theo đề — khi luyện gõ sẽ được tự động bỏ qua.</li>
+        <li><b>2. Quy tắc Email:</b> đổi ngôi so với đề: <code>I/me/my</code> ↔ <code>you/your</code>; <code>we/us/our</code> ↔ <code>you/your</code>.</li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="card head">
+      <div class="head-top">
+        <div style="min-width:0;flex:1 1 320px">
+          <div class="badges"><span class="badge" id="tpl-badge">ESSAY 1</span><span class="badge st" id="tpl-status">Đang luyện tập</span></div>
+          <h2 id="tpl-title"></h2>
+          <p id="tpl-desc"></p>
+        </div>
+        <div class="head-act">
+          <button class="btn" onclick="speakFull()">🔊 Nghe cả bài</button>
+          <button class="btn" onclick="copyTemplate()">📋 Sao chép</button>
+          <button class="btn ok" id="btn-master" onclick="toggleMastered()">✓ Đánh dấu đã thuộc</button>
+        </div>
+      </div>
+      <nav class="modes" id="modes" aria-label="4 bước học">
+        <button class="mode" id="mode-1" onclick="switchMode(1)"><span class="st">Bước 1 • Hiểu &amp; nhớ</span><span class="nm">📖<span class="short">Song ngữ</span><span class="long"> Dịch song ngữ</span></span></button>
+        <button class="mode" id="mode-2" onclick="switchMode(2)"><span class="st">Bước 2 • Phản xạ tay</span><span class="nm">⌨️<span class="short">Gõ câu</span><span class="long"> Gõ từng câu</span></span></button>
+        <button class="mode" id="mode-3" onclick="switchMode(3)"><span class="st">Bước 3 • Việt → Anh</span><span class="nm">🧩<span class="short">Điền từ</span><span class="long"> Điền cụm từ</span></span></button>
+        <button class="mode" id="mode-4" onclick="switchMode(4)"><span class="st">Bước 4 • Thực chiến</span><span class="nm">🏆<span class="short">Cả bài</span><span class="long"> Gõ nguyên bài</span></span></button>
+      </nav>
+    </section>
+
+    <section class="card work" id="workspace" aria-live="polite"></section>
+  </main>
+</div>
+
+<div id="toast" role="status" aria-live="polite"><span id="toast-icon">✨</span><span id="toast-msg"></span></div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="row" style="justify-content:space-between;flex-wrap:nowrap">
+      <h3 id="modal-title">🚀 Đưa web lên mạng miễn phí</h3>
+      <button class="icon-btn" onclick="closeModal()" aria-label="Đóng">✕</button>
+    </div>
+    <p style="font-size:13.5px;color:var(--muted);margin:10px 0 0">Cả ứng dụng nằm trong <b>1 file <code>index.html</code></b>, chạy mượt trên mọi thiết bị, tiến độ học được lưu ngay trên máy bạn.</p>
+    <div class="box"><b class="t">Đưa lên GitHub Pages (1 phút)</b>
+      <ol>
+        <li>Bấm <b>"Tải index.html"</b> bên dưới.</li>
+        <li>Vào <a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a>, tạo repo <code>vstep-b1-template</code> (Public) rồi upload file.</li>
+        <li><b>Settings → Pages</b> → Branch <code>main</code> → <b>Save</b>. Chờ ~30 giây là có link.</li>
+      </ol>
+    </div>
+    <div class="box"><b class="t">📱 Cài như app trên điện thoại</b>
+      <ol>
+        <li><b>iPhone (Safari):</b> nút Chia sẻ → <i>Thêm vào Màn hình chính</i>.</li>
+        <li><b>Android (Chrome):</b> menu ⋮ → <i>Thêm vào màn hình chính</i>.</li>
+      </ol>
+    </div>
+    <div class="row" style="justify-content:flex-end;margin-top:18px">
+      <button class="btn" onclick="closeModal()">Đóng</button>
+      <button class="btn primary" onclick="downloadHtml()">⬇️ Tải index.html</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// =========================================================================
+// 1. DỮ LIỆU 7 TEMPLATE BETMA
+// =========================================================================
+const TEMPLATES = [
+  {
+    id: 'essay-1', code: 'ESSAY 1', shortTitle: 'Advantages & Disadvantages',
+    title: 'Essay 1: Advantages & Disadvantages (Mặt lợi & Mặt hại)',
+    desc: 'Dùng khi đề bài yêu cầu phân tích ưu điểm và nhược điểm của một vấn đề (làm việc nhóm, sống ở thành phố, học online...).',
+    pronounRule: null,
+    sentences: [
+      { part: 'Mở bài • Câu 1 (Dẫn dắt)', en: 'In recent years, [topic] has become a broad issue to the general public.', vi: 'Trong những năm gần đây, [chủ đề] đã trở thành một vấn đề rộng lớn đối với công chúng.', hook: 'Công thức Mở bài 3 câu bất biến: Dẫn dắt → Tầm quan trọng → Mục đích bài viết.', blanks: ['In recent years', 'has become a broad issue to the general public'] },
+      { part: 'Mở bài • Câu 2 (Nhấn mạnh)', en: 'Although [topic] can be important in some ways, it still has some disadvantages.', vi: 'Mặc dù [chủ đề] có thể quan trọng theo một số cách, nó vẫn có một vài nhược điểm.', hook: 'Cấu trúc nhượng bộ "Although... can be important..., it still has..." ăn điểm ngữ pháp B1.', blanks: ['Although', 'can be important in some ways', 'it still has some disadvantages'] },
+      { part: 'Mở bài • Câu 3 (Nêu mục đích)', en: 'This essay will discuss both advantages and disadvantages of [topic].', vi: 'Bài luận này sẽ thảo luận cả mặt lợi và mặt hại của [chủ đề].', hook: 'Luôn dùng "This essay will discuss..." để chốt Mở bài rõ ràng, đúng trọng tâm.', blanks: ['This essay will discuss both advantages and disadvantages of'] },
+      { part: 'Thân bài 1 • Câu 1 (Câu chủ đề Mặt lợi)', en: 'On the one hand, [topic] brings several benefits to people.', vi: 'Một mặt, [chủ đề] mang lại nhiều lợi ích cho con người.', hook: 'Bắt đầu đoạn 1 bằng "On the one hand" (Một mặt).', blanks: ['On the one hand', 'brings several benefits to people'] },
+      { part: 'Thân bài 1 • Câu 2 (Ý lợi 1)', en: 'The first advantage is that [advantage 1].', vi: 'Lợi ích đầu tiên là [ý lợi 1].', hook: 'Mẫu câu đơn giản, không bao giờ sai ngữ pháp: "The first advantage is that + Mệnh đề".', blanks: ['The first advantage is that'] },
+      { part: 'Thân bài 1 • Câu 3 (Giải thích/Ví dụ)', en: 'For example, [example 1].', vi: 'Ví dụ như, [ví dụ 1].', hook: 'Luôn có "For example," sau mỗi ý chính để kéo dài số chữ lên 250+ từ.', blanks: ['For example'] },
+      { part: 'Thân bài 1 • Câu 4 (Ý lợi 2)', en: 'Another benefit is that [advantage 2].', vi: 'Một lợi ích khác là [ý lợi 2].', hook: 'Dùng "Another benefit is that" để nối sang ý thứ 2 mượt mà.', blanks: ['Another benefit is that'] },
+      { part: 'Thân bài 2 • Câu 1 (Câu chủ đề Mặt hại)', en: 'On the other hand, there are some drawbacks of [topic].', vi: 'Mặt khác, có một vài hạn chế của [chủ đề].', hook: 'Đối xứng với "On the one hand" là "On the other hand". Thay advantages = drawbacks.', blanks: ['On the other hand', 'there are some drawbacks of'] },
+      { part: 'Thân bài 2 • Câu 2 (Ý hại 1)', en: 'First of all, [disadvantage 1].', vi: 'Trước hết, [ý hại 1].', hook: 'Dùng "First of all," cho ý tiêu cực đầu tiên.', blanks: ['First of all'] },
+      { part: 'Thân bài 2 • Câu 3 (Ý hại 2)', en: 'In addition, [disadvantage 2].', vi: 'Thêm vào đó, [ý hại 2].', hook: 'Từ nối bổ sung kinh điển: "In addition,".', blanks: ['In addition'] },
+      { part: 'Kết bài • Câu 1 (Tóm tắt)', en: 'In conclusion, [topic] has both advantages and disadvantages.', vi: 'Tóm lại, [chủ đề] có cả mặt lợi và mặt hại.', hook: 'Bắt đầu kết bài bằng "In conclusion," + nhắc lại ý Mở bài.', blanks: ['In conclusion', 'has both advantages and disadvantages'] },
+      { part: 'Kết bài • Câu 2 (Lời khuyên)', en: 'Therefore, people should consider carefully before making a decision.', vi: 'Vì vậy, mọi người nên cân nhắc kỹ lưỡng trước khi đưa ra quyết định.', hook: 'Câu chốt an toàn dùng được cho mọi đề Advantages & Disadvantages.', blanks: ['Therefore, people should consider carefully before making a decision'] }
+    ]
+  },
+  {
+    id: 'essay-2', code: 'ESSAY 2', shortTitle: 'Agree or Disagree (Opinion)',
+    title: 'Essay 2: Agree or Disagree (Đồng ý hay Không đồng ý)',
+    desc: 'Dùng khi đề đưa ra một quan điểm và hỏi: Do you agree or disagree? (Nên chọn đồng ý hoặc không đồng ý hoàn toàn để dễ viết).',
+    pronounRule: null,
+    sentences: [
+      { part: 'Mở bài • Câu 1 (Dẫn dắt)', en: 'In recent years, [topic] has become a controversial issue in our society.', vi: 'Trong những năm gần đây, [chủ đề] đã trở thành một vấn đề gây tranh cãi trong xã hội của chúng ta.', hook: 'Dạng Opinion thay "broad issue" bằng "controversial issue" (vấn đề gây tranh cãi).', blanks: ['In recent years', 'has become a controversial issue in our society'] },
+      { part: 'Mở bài • Câu 2 (Nêu quan điểm)', en: 'Personally, I completely agree with this idea for the following reasons.', vi: 'Cá nhân tôi hoàn toàn đồng ý với ý kiến này vì những lý do sau đây.', hook: 'Nếu không đồng ý, chỉ cần đổi "agree" thành "disagree".', blanks: ['Personally, I completely agree with this idea for the following reasons'] },
+      { part: 'Thân bài 1 • Câu 1 (Lý do 1)', en: 'The first reason why I support this view is that [reason 1].', vi: 'Lý do đầu tiên tại sao tôi ủng hộ quan điểm này là [lý do 1].', hook: 'Cấu trúc "The first reason why I support this view is that..." cực kỳ chắc chắn.', blanks: ['The first reason why I support this view is that'] },
+      { part: 'Thân bài 1 • Câu 2 (Giải thích)', en: 'This means that [explanation 1].', vi: 'Điều này có nghĩa là [giải thích 1].', hook: 'Cụm giải thích vạn năng: "This means that...".', blanks: ['This means that'] },
+      { part: 'Thân bài 1 • Câu 3 (Ví dụ)', en: 'For instance, [example 1].', vi: 'Chẳng hạn như, [ví dụ 1].', hook: 'Thay đổi từ vựng với "For instance," thay vì lặp lại "For example".', blanks: ['For instance'] },
+      { part: 'Thân bài 2 • Câu 1 (Lý do 2)', en: 'Another important reason is that [reason 2].', vi: 'Một lý do quan trọng khác là [lý do 2].', hook: 'Mở đầu đoạn thân bài 2 bằng "Another important reason is that...".', blanks: ['Another important reason is that'] },
+      { part: 'Thân bài 2 • Câu 2 (Hệ quả tích cực)', en: 'As a result, [result 2].', vi: 'Kết quả là, [kết quả 2].', hook: 'Dùng "As a result," để chỉ kết quả của lý do 2.', blanks: ['As a result'] },
+      { part: 'Kết bài • Câu 1 (Khẳng định lại)', en: 'In conclusion, I strongly believe that [topic] brings many positive effects.', vi: 'Tóm lại, tôi tin tưởng mạnh mẽ rằng [chủ đề] mang lại nhiều tác động tích cực.', hook: 'Chốt lại quan điểm mạnh mẽ bằng "I strongly believe that...".', blanks: ['In conclusion, I strongly believe that', 'brings many positive effects'] }
+    ]
+  },
+  {
+    id: 'essay-3', code: 'ESSAY 3', shortTitle: 'Discuss Both Views',
+    title: 'Essay 3: Discuss Both Views (Thảo luận 2 quan điểm)',
+    desc: 'Dùng khi đề có 2 luồng ý kiến trái ngược: Some people think A, while others believe B. Discuss both views and give your opinion.',
+    pronounRule: null,
+    sentences: [
+      { part: 'Mở bài • Câu 1 (Nêu 2 luồng ý kiến)', en: 'People have different views about [topic].', vi: 'Mọi người có những quan điểm khác nhau về [chủ đề].', hook: 'Câu mở bài ngắn gọn, chuẩn xác nhất cho dạng Discuss Both Views.', blanks: ['People have different views about'] },
+      { part: 'Mở bài • Câu 2 (Nhiệm vụ bài viết)', en: 'This essay will discuss both sides of the argument before giving my own opinion.', vi: 'Bài luận này sẽ thảo luận cả hai khía cạnh của cuộc tranh luận trước khi đưa ra ý kiến của riêng tôi.', hook: 'Nhớ cụm "both sides of the argument" (cả 2 phía của cuộc tranh luận).', blanks: ['This essay will discuss both sides of the argument before giving my own opinion'] },
+      { part: 'Thân bài 1 • Câu 1 (Quan điểm 1)', en: 'On the one hand, some people believe that [view 1].', vi: 'Một mặt, một số người tin rằng [quan điểm 1].', hook: 'Trình bày quan điểm 1 khách quan bằng "some people believe that".', blanks: ['On the one hand, some people believe that'] },
+      { part: 'Thân bài 1 • Câu 2 (Lý do cho QĐ 1)', en: 'This is because [reason for view 1].', vi: 'Điều này là bởi vì [lý do cho quan điểm 1].', hook: 'Nối lý do siêu nhanh: "This is because + Mệnh đề".', blanks: ['This is because'] },
+      { part: 'Thân bài 2 • Câu 1 (Quan điểm 2)', en: 'On the other hand, others argue that [view 2].', vi: 'Mặt khác, những người khác lại tranh luận rằng [quan điểm 2].', hook: 'Dùng "others argue that" để đối chiếu với "some people believe that".', blanks: ['On the other hand, others argue that'] },
+      { part: 'Thân bài 2 • Câu 2 (Giải thích QĐ 2)', en: 'For example, [example for view 2].', vi: 'Ví dụ như, [ví dụ cho quan điểm 2].', hook: 'Đưa ví dụ minh họa cho quan điểm 2.', blanks: ['For example'] },
+      { part: 'Kết bài • Câu 1 (Chốt & Nêu ý kiến cá nhân)', en: 'In conclusion, while both views have their own reasons, I personally lean toward the second opinion.', vi: 'Tóm lại, trong khi cả hai quan điểm đều có lý do riêng, cá nhân tôi nghiêng về ý kiến thứ hai hơn.', hook: 'Cụm ăn điểm cao: "I personally lean toward..." (Cá nhân tôi nghiêng về...).', blanks: ['In conclusion, while both views have their own reasons, I personally lean toward the second opinion'] }
+    ]
+  },
+  {
+    id: 'essay-4', code: 'ESSAY 4', shortTitle: 'Cause - Effect - Solution',
+    title: 'Essay 4: Cause - Effect - Solution (Nguyên nhân - Hậu quả - Giải pháp)',
+    desc: 'Dùng cho các vấn đề xã hội/môi trường/sức khỏe (ô nhiễm, béo phì, kẹt xe, nghiện game...).',
+    pronounRule: null,
+    sentences: [
+      { part: 'Mở bài • Câu 1 (Dẫn dắt vấn đề)', en: 'In recent years, [problem] has become a serious problem in many countries.', vi: 'Trong những năm gần đây, [vấn đề] đã trở thành một vấn đề nghiêm trọng ở nhiều quốc gia.', hook: 'Thay "broad issue" bằng "serious problem" vì đây là dạng bài tiêu cực.', blanks: ['In recent years', 'has become a serious problem in many countries'] },
+      { part: 'Mở bài • Câu 2 (Mục đích)', en: 'This essay will look at the main causes of this issue and suggest some practical solutions.', vi: 'Bài luận này sẽ xem xét các nguyên nhân chính của vấn đề này và đề xuất một vài giải pháp thiết thực.', hook: 'Nếu đề hỏi Effect (Hậu quả), đổi "causes" thành "effects" hoặc "causes and effects".', blanks: ['This essay will look at the main causes of this issue and suggest some practical solutions'] },
+      { part: 'Thân bài 1 • Câu 1 (Chủ đề Nguyên nhân)', en: 'There are several reasons behind [problem].', vi: 'Có một vài lý do đằng sau [vấn đề].', hook: 'Câu mở đoạn Nguyên nhân ngắn gọn, tự nhiên.', blanks: ['There are several reasons behind'] },
+      { part: 'Thân bài 1 • Câu 2 (Nguyên nhân 1)', en: 'The primary cause is that [cause 1].', vi: 'Nguyên nhân chủ yếu là [nguyên nhân 1].', hook: '"The primary cause is that" = Nguyên nhân chính là.', blanks: ['The primary cause is that'] },
+      { part: 'Thân bài 1 • Câu 3 (Hậu quả / Nguyên nhân 2)', en: 'Furthermore, this problem can lead to [effect].', vi: 'Hơn nữa, vấn đề này có thể dẫn đến [hậu quả].', hook: 'Cấu trúc "lead to + Danh từ/V-ing" dùng để nêu hậu quả cực chuẩn.', blanks: ['Furthermore, this problem can lead to'] },
+      { part: 'Thân bài 2 • Câu 1 (Chủ đề Giải pháp)', en: 'However, several effective solutions can be taken to solve this problem.', vi: 'Tuy nhiên, một vài giải pháp hiệu quả có thể được thực hiện để giải quyết vấn đề này.', hook: 'Mở đoạn Giải pháp bằng "However, several effective solutions can be taken...".', blanks: ['However, several effective solutions can be taken to solve this problem'] },
+      { part: 'Thân bài 2 • Câu 2 (Giải pháp 1 - Chính phủ)', en: 'Firstly, the government should [solution 1].', vi: 'Đầu tiên, chính phủ nên [giải pháp 1].', hook: 'Chia giải pháp theo 2 đối tượng: Chính phủ (government) & Cá nhân (individuals).', blanks: ['Firstly, the government should'] },
+      { part: 'Thân bài 2 • Câu 3 (Giải pháp 2 - Cá nhân)', en: 'Secondly, individuals need to raise their awareness of [problem].', vi: 'Thứ hai, mỗi cá nhân cần nâng cao nhận thức của họ về [vấn đề].', hook: 'Cụm từ "raise their awareness of..." (nâng cao nhận thức về) dùng được cho mọi đề!', blanks: ['Secondly, individuals need to raise their awareness of'] },
+      { part: 'Kết bài • Câu 1 (Chốt)', en: 'In conclusion, although [problem] is caused by many factors, it can be solved if the government and people work together.', vi: 'Tóm lại, mặc dù [vấn đề] bị gây ra bởi nhiều yếu tố, nó có thể được giải quyết nếu chính phủ và người dân cùng chung tay.', hook: 'Câu kết bài mẫu mực, trọn vẹn ý nghĩa.', blanks: ['In conclusion, although', 'is caused by many factors, it can be solved if the government and people work together'] }
+    ]
+  },
+  {
+    id: 'essay-5', code: 'ESSAY 5', shortTitle: 'Two-Part Question (2 Câu hỏi)',
+    title: 'Essay 5: Two-Part Question / One-View (Dạng 2 câu hỏi)',
+    desc: 'Dùng khi đề đưa ra 1 thực trạng và đặt 2 câu hỏi cụ thể (Ví dụ: Why is this happening? Is it a positive or negative development?).',
+    pronounRule: null,
+    sentences: [
+      { part: 'Mở bài • Câu 1 (Dẫn dắt)', en: 'Nowadays, [topic] is becoming more and more popular around the world.', vi: 'Ngày nay, [chủ đề] đang ngày càng trở nên phổ biến trên toàn thế giới.', hook: 'Cấu trúc "more and more popular" (ngày càng phổ biến) rất dễ nhớ.', blanks: ['Nowadays', 'is becoming more and more popular around the world'] },
+      { part: 'Mở bài • Câu 2 (Trả lời 2 câu hỏi)', en: 'This essay will explain the reasons for this trend and discuss whether it is positive or negative.', vi: 'Bài luận này sẽ giải thích các lý do cho xu hướng này và thảo luận xem nó là tích cực hay tiêu cực.', hook: 'Khớp trực tiếp với 2 câu hỏi của đề bài.', blanks: ['This essay will explain the reasons for this trend and discuss whether it is positive or negative'] },
+      { part: 'Thân bài 1 • Câu 1 (Trả lời câu hỏi 1)', en: 'There are two main reasons why [topic] is happening.', vi: 'Có hai lý do chính giải thích tại sao [chủ đề] đang diễn ra.', hook: 'Thân bài 1 tập trung trả lời trọn vẹn câu hỏi số 1 của đề.', blanks: ['There are two main reasons why', 'is happening'] },
+      { part: 'Thân bài 1 • Câu 2 (Ý 1)', en: 'To begin with, [point 1].', vi: 'Bắt đầu với việc, [ý 1].', hook: 'Từ nối mở đầu ý: "To begin with,".', blanks: ['To begin with'] },
+      { part: 'Thân bài 2 • Câu 1 (Trả lời câu hỏi 2)', en: 'In my opinion, this trend is a positive development.', vi: 'Theo ý kiến của tôi, xu hướng này là một sự phát triển tích cực.', hook: 'Thân bài 2 trả lời thẳng vào câu hỏi số 2.', blanks: ['In my opinion, this trend is a positive development'] },
+      { part: 'Thân bài 2 • Câu 2 (Chứng minh)', en: 'This is because it helps people [benefit].', vi: 'Điều này là bởi vì nó giúp mọi người [lợi ích].', hook: 'Dùng "it helps people + V-nguyên thể" siêu dễ viết.', blanks: ['This is because it helps people'] },
+      { part: 'Kết bài • Câu 1 (Tóm lại 2 ý)', en: 'In conclusion, [topic] is driven by several factors and brings many benefits to society.', vi: 'Tóm lại, [chủ đề] được thúc đẩy bởi nhiều yếu tố và mang lại nhiều lợi ích cho xã hội.', hook: 'Tóm tắt lại câu trả lời của cả Thân bài 1 và Thân bài 2.', blanks: ['In conclusion', 'is driven by several factors and brings many benefits to society'] }
+    ]
+  },
+  {
+    id: 'email-1', code: 'EMAIL 1', shortTitle: 'Cung Cấp Thông Tin (CCTT)',
+    title: 'Email 1: Cung Cấp Thông Tin (Trả lời thư bạn bè / tổ chức)',
+    desc: 'Dùng khi nhận được email hỏi thăm, xin lời khuyên, hỏi thông tin về khóa học/chuyến đi và bạn viết thư trả lời cung cấp thông tin.',
+    pronounRule: 'QUY TẮC ĐỔI NGÔI VÀNG: Đề bài dùng "I / me / my" → Bạn đổi thành "you / your". Đề dùng "you / your" → Bạn đổi thành "I / me / my" hoặc "we / us / our".',
+    sentences: [
+      { part: 'Lời chào (Greeting)', en: 'Dear [Name],', vi: 'Thân gửi [Tên người nhận],', hook: 'Thư thân mật dùng "Dear + Tên riêng,". Thư trang trọng dùng "Dear Sir or Madam,".', blanks: ['Dear'] },
+      { part: 'Mở thư • Câu 1 (Hỏi thăm)', en: 'I hope you are doing well.', vi: 'Mình hy vọng bạn vẫn khỏe và mọi việc đều tốt đẹp.', hook: 'Câu mở đầu thân thiện, tự nhiên chuẩn bản xứ.', blanks: ['I hope you are doing well'] },
+      { part: 'Mở thư • Câu 2 (Cảm ơn & Nêu lý do)', en: 'Thank you for your email asking me about [topic].', vi: 'Cảm ơn email của bạn đã hỏi mình về [chủ đề].', hook: 'Bám sát đề bài: thay [topic] bằng cụm từ trong đề (nhớ đổi ngôi!).', blanks: ['Thank you for your email asking me about'] },
+      { part: 'Mở thư • Câu 3 (Dẫn vào nội dung)', en: 'I am writing this email to give you some detailed information.', vi: 'Mình viết email này để cung cấp cho bạn một vài thông tin chi tiết.', hook: 'Câu chuyển ý mượt mà trước khi trả lời các câu hỏi của đề.', blanks: ['I am writing this email to give you some detailed information'] },
+      { part: 'Thân thư • Câu 1 (Trả lời câu hỏi 1)', en: 'First of all, regarding [question 1], I would like to tell you that [answer 1].', vi: 'Trước hết, liên quan đến [câu hỏi 1], mình muốn nói với bạn rằng [câu trả lời 1].', hook: 'Cấu trúc "regarding + Danh từ/V-ing" giúp dẫn dắt từng câu hỏi trong đề cực rõ ràng.', blanks: ['First of all, regarding', 'I would like to tell you that'] },
+      { part: 'Thân thư • Câu 2 (Trả lời câu hỏi 2)', en: 'Secondly, about [question 2], [answer 2].', vi: 'Thứ hai, về phần [câu hỏi 2], [câu trả lời 2].', hook: 'Trả lời tiếp ý thứ 2 trong đề bài.', blanks: ['Secondly, about'] },
+      { part: 'Thân thư • Câu 3 (Trả lời câu hỏi 3 / Gợi ý)', en: 'Finally, I think you should [suggestion/answer 3].', vi: 'Cuối cùng, mình nghĩ bạn nên [gợi ý / câu trả lời 3].', hook: 'Đảm bảo trả lời đủ 100% số câu hỏi có dấu "?" trong đề bài.', blanks: ['Finally, I think you should'] },
+      { part: 'Kết thư • Câu 1 (Mong hồi âm)', en: 'I hope this information is helpful for you. Please let me know if you need anything else.', vi: 'Mình hy vọng những thông tin này hữu ích cho bạn. Hãy cho mình biết nếu bạn cần thêm gì nhé.', hook: 'Cặp câu kết thư bất hủ cho mọi đề Cung cấp thông tin.', blanks: ['I hope this information is helpful for you. Please let me know if you need anything else'] },
+      { part: 'Ký tên (Sign-off)', en: 'Best regards, [Your Name]', vi: 'Trân trọng, [Tên của bạn]', hook: 'Tuyệt đối không ký tên thật của bạn trong phòng thi (dùng tên giả như Minh, Lan, Alex).', blanks: ['Best regards'] }
+    ]
+  },
+  {
+    id: 'email-2', code: 'EMAIL 2', shortTitle: 'Yêu Cầu Thông Tin (YCTT)',
+    title: 'Email 2: Yêu Cầu Thông Tin (Hỏi khóa học, dịch vụ, câu lạc bộ)',
+    desc: 'Dùng khi bạn đọc được một thông báo/quảng cáo và viết thư để hỏi thêm thông tin chi tiết.',
+    pronounRule: 'QUY TẮC ĐỔI NGÔI VÀNG: Đề quảng cáo dùng "we / us / our" → Bạn đổi thành "you / your". Đề dùng "you / your" → Bạn đổi thành "I / me / my".',
+    sentences: [
+      { part: 'Lời chào (Greeting)', en: 'Dear Sir or Madam,', vi: 'Kính gửi Quý Ông/Bà,', hook: 'Dùng "Dear Sir or Madam," khi không biết tên người nhận (trung tâm, khách sạn, công ty).', blanks: ['Dear Sir or Madam'] },
+      { part: 'Mở thư • Câu 1 (Nêu nguồn tin & Mục đích)', en: 'I recently saw your advertisement about [topic] and I am very interested in it.', vi: 'Gần đây tôi có thấy quảng cáo của quý vị về [chủ đề] và tôi rất quan tâm đến nó.', hook: 'Cụm "saw your advertisement about..." dùng được cho mọi đề hỏi thông tin.', blanks: ['I recently saw your advertisement about', 'and I am very interested in it'] },
+      { part: 'Mở thư • Câu 2 (Mục đích viết thư)', en: 'I am writing this email to ask for some further information.', vi: 'Tôi viết email này để hỏi thêm một vài thông tin chi tiết.', hook: 'Câu mục đích chuẩn văn phong trang trọng (Formal).', blanks: ['I am writing this email to ask for some further information'] },
+      { part: 'Thân thư • Câu 1 (Câu hỏi 1)', en: 'First of all, could you please tell me [question 1]?', vi: 'Trước hết, quý vị có thể vui lòng cho tôi biết [câu hỏi 1] không?', hook: 'Cấu trúc hỏi lịch sự: "Could you please tell me + Từ để hỏi (when/where/how much) + S + V?".', blanks: ['First of all, could you please tell me'] },
+      { part: 'Thân thư • Câu 2 (Câu hỏi 2)', en: 'Secondly, I would like to know [question 2].', vi: 'Thứ hai, tôi muốn biết [câu hỏi 2].', hook: 'Đa dạng cấu trúc hỏi bằng "I would like to know...".', blanks: ['Secondly, I would like to know'] },
+      { part: 'Thân thư • Câu 3 (Câu hỏi 3)', en: 'Finally, can you let me know if [question 3]?', vi: 'Cuối cùng, quý vị có thể cho tôi biết liệu [câu hỏi 3] không?', hook: 'Dùng "...let me know if..." cho câu hỏi Yes/No.', blanks: ['Finally, can you let me know if'] },
+      { part: 'Kết thư • Câu 1 (Cảm ơn & Mong hồi âm)', en: 'Thank you for your time and assistance. I look forward to hearing from you soon.', vi: 'Cảm ơn quý vị đã dành thời gian và hỗ trợ. Tôi rất mong sớm nhận được hồi âm từ quý vị.', hook: 'Câu kết thư chuẩn mực 10/10 cho văn phong trang trọng.', blanks: ['Thank you for your time and assistance. I look forward to hearing from you soon'] },
+      { part: 'Ký tên (Sign-off)', en: 'Yours faithfully, [Your Name]', vi: 'Trân trọng kính chào, [Tên của bạn]', hook: 'Mở đầu bằng "Dear Sir or Madam," thì kết thúc chuẩn ngữ pháp là "Yours faithfully,".', blanks: ['Yours faithfully'] }
+    ]
+  }
+];
+
+// =========================================================================
+// 2. TIỆN ÍCH & TRẠNG THÁI
+// =========================================================================
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+// Giữ nguyên key cũ để không mất tiến độ đã học
+const K = { m: 'vstep_b1_mastered', w: 'vstep_b1_best_wpm', d: 'vstep_b1_done', s: 'vstep_b1_streak', i: 'vstep_b1_ignorecase', l: 'vstep_b1_last', t: 'vstep_b1_theme' };
+const PASS = 85;
+
+const state = {
+  tpl: TEMPLATES[0].id, mode: 1,
+  hideVi: false, hideEn: false,
+  m2Index: 0, m2Input: '', m2Start: null, m2Blind: false, m2Hint: false, m2Lock: false,
+  m3Answers: {}, m3Checked: false, m3Hints: false,
+  m4Input: '', m4Result: null,
+  mastered: store.get(K.m, []), bestWpm: parseInt(store.get(K.w, 0), 10) || 0,
+  done: store.get(K.d, {}), streak: store.get(K.s, { last: '', count: 0 }),
+  ignoreCase: store.get(K.i, null)
+};
+if (state.ignoreCase === null) state.ignoreCase = matchMedia('(pointer: coarse)').matches; // điện thoại: không phân biệt hoa/thường
+{ const last = store.get(K.l, null); if (last && TEMPLATES.some(t => t.id === last)) state.tpl = last; }
+
+const cur = () => TEMPLATES.find(t => t.id === state.tpl) || TEMPLATES[0];
+
+function persist() {
+  store.set(K.m, state.mastered); store.set(K.w, state.bestWpm); store.set(K.d, state.done); store.set(K.s, state.streak);
+  updateStats(); renderSidebar(); renderHead();
+}
+function markDone(id, mode) {
+  const a = state.done[id] || (state.done[id] = []);
+  if (!a.includes(mode)) { a.push(mode); persist(); }
+}
+function dateStr(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function touchStreak() {
+  const t = dateStr(new Date()); if (state.streak.last === t) return;
+  const y = dateStr(new Date(Date.now() - 864e5));
+  state.streak = { last: t, count: state.streak.last === y ? state.streak.count + 1 : 1 };
+  persist();
+}
+function streakNow() { // hiển thị 0 nếu đã bỏ lỡ hơn 1 ngày
+  const t = dateStr(new Date()), y = dateStr(new Date(Date.now() - 864e5));
+  return (state.streak.last === t || state.streak.last === y) ? state.streak.count : 0;
+}
+
+// Phần cố định (bỏ [ngoặc vuông]) để gõ nhanh
+function fixedTarget(en) {
+  return en.replace(/\[[^\]]+\]/g, '').replace(/\s+/g, ' ').replace(/\s+([,.?!])/g, '$1').trim();
+}
+const wordsOf = str => str.toLowerCase().replace(/[.,?!;:"]/g, '').split(/\s+/).filter(Boolean);
+
+// =========================================================================
+// 3. ÂM THANH • TOAST • CONFETTI • THEME
+// =========================================================================
+let voiceEn = null;
+function pickVoice() {
+  if (!('speechSynthesis' in window)) return;
+  const vs = speechSynthesis.getVoices();
+  voiceEn = vs.find(v => /en[-_]US/i.test(v.lang) && /(Google|Samantha|Natural|Aria|Jenny)/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || null;
+}
+if ('speechSynthesis' in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speak(text) {
+  if (!('speechSynthesis' in window)) return toast('Trình duyệt chưa hỗ trợ đọc giọng nói.', '⚠️');
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text.replace(/[\[\]]/g, ''));
+  u.lang = 'en-US'; u.rate = 0.92; if (voiceEn) u.voice = voiceEn;
+  speechSynthesis.speak(u);
+}
+function speakSentence(i) { speak(cur().sentences[i].en); }
+function speakFull() { speak(cur().sentences.map(s => s.en).join(' ')); toast('Đang đọc toàn bộ bài mẫu…', '🔊'); }
+
+let audioCtx = null;
+function chime() {
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const o = audioCtx.createOscillator(), g = audioCtx.createGain(), t = audioCtx.currentTime;
+    o.type = 'sine'; o.frequency.setValueAtTime(587.33, t); o.frequency.setValueAtTime(880, t + .08);
+    g.gain.setValueAtTime(.07, t); g.gain.exponentialRampToValueAtTime(.001, t + .28);
+    o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(t + .28);
+  } catch (e) {}
+}
+
+let toastTimer;
+function toast(msg, icon = '✨') {
+  $('#toast-msg').textContent = msg; $('#toast-icon').textContent = icon;
+  const el = $('#toast'); el.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+function confetti(n = 140) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c = $('#fx'), ctx = c.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
+  c.width = innerWidth * dpr; c.height = innerHeight * dpr; ctx.scale(dpr, dpr);
+  const colors = ['#9b8cf2', '#7cc7f5', '#34d399', '#fbbf24', '#f472b6', '#a78bfa'];
+  const ps = Array.from({ length: n }, () => ({
+    x: innerWidth / 2 + (Math.random() - .5) * 120, y: innerHeight * .55,
+    vx: (Math.random() - .5) * 14, vy: -Math.random() * 15 - 5, g: .38 + Math.random() * .2,
+    s: 5 + Math.random() * 6, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: colors[(Math.random() * colors.length) | 0]
+  }));
+  let f = 0;
+  (function tick() {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    ps.forEach(p => { p.vy += p.g; p.x += p.vx; p.y += p.vy; p.vx *= .99; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.globalAlpha = Math.max(0, 1 - f / 110); ctx.fillRect(-p.s / 2, -p.s / 3, p.s, p.s / 1.6); ctx.restore(); });
+    if (++f < 110) requestAnimationFrame(tick); else ctx.clearRect(0, 0, innerWidth, innerHeight);
+  })();
+}
+
+function toggleTheme() {
+  const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = t; store.set(K.t, t); $('#btn-theme').textContent = t === 'dark' ? '☀️' : '🌙';
+}
+
+// =========================================================================
+// 4. SIDEBAR • HEADER • TABS
+// =========================================================================
+function updateStats() {
+  $('#st-m').textContent = `${state.mastered.length}/${TEMPLATES.length}`;
+  $('#st-s').textContent = streakNow();
+  $('#st-w').textContent = state.bestWpm;
+  const total = TEMPLATES.length * 4;
+  const done = TEMPLATES.reduce((n, t) => n + (state.done[t.id] || []).length, 0);
+  const pct = Math.round(done / total * 100);
+  $('#ring-txt').textContent = pct + '%';
+  $('#ring-fg').style.strokeDashoffset = 213.6 * (1 - pct / 100);
+  $('#ring-sub').textContent = `Hoàn thành ${done}/${total} chặng`;
+}
+
+function renderSidebar() {
+  $('#tpl-list').innerHTML = TEMPLATES.map(t => {
+    const on = t.id === state.tpl, m = state.mastered.includes(t.id), d = state.done[t.id] || [];
+    return `<button class="tpl ${on ? 'on' : ''}" onclick="selectTemplate('${t.id}')" aria-current="${on}">
+      <div class="meta">
+        <span class="code ${t.id.startsWith('email') ? 'em' : 'es'}">${t.code}</span>
+        <div class="nm">${esc(t.shortTitle)}</div>
+        <div class="dots">${[1, 2, 3, 4].map(i => `<i class="${d.includes(i) ? 'f' : ''}"></i>`).join('')}</div>
+      </div>
+      ${m ? '<span class="check" title="Đã thuộc lòng">✅</span>' : ''}
+    </button>`;
+  }).join('');
+  const act = document.querySelector('.tpl.on');
+  if (act && innerWidth < 1024) act.scrollIntoView({ inline: 'center', block: 'nearest' });
+}
+
+function renderHead() {
+  const t = cur(), m = state.mastered.includes(t.id), d = state.done[t.id] || [];
+  $('#tpl-badge').textContent = t.code;
+  const [a, b] = t.title.split(': ');
+  $('#tpl-title').innerHTML = b ? `${esc(a)}: <em>${esc(b)}</em>` : esc(t.title);
+  $('#tpl-desc').textContent = t.desc;
+  const st = $('#tpl-status');
+  st.textContent = m ? '✅ Đã thuộc lòng' : 'Đang luyện tập'; st.className = 'badge st' + (m ? ' ok' : '');
+  const bm = $('#btn-master');
+  bm.className = 'btn ok' + (m ? ' on' : ''); bm.textContent = m ? '★ Đã thuộc (bỏ đánh dấu)' : '✓ Đánh dấu đã thuộc';
+  [1, 2, 3, 4].forEach(i => { const e = $('#mode-' + i); e.classList.toggle('on', i === state.mode); e.classList.toggle('done', d.includes(i)); });
+}
+
+function selectTemplate(id) {
+  Object.assign(state, { tpl: id, m2Index: 0, m2Input: '', m2Start: null, m2Hint: false, m2Lock: false, m3Answers: {}, m3Checked: false, m4Input: '', m4Result: null });
+  store.set(K.l, id);
+  renderSidebar(); renderHead(); renderWorkspace(); scrollWork();
+}
+function switchMode(m) { state.mode = m; renderHead(); renderWorkspace(); scrollWork(); }
+function scrollWork() { if (innerWidth < 1024) $('#workspace').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+
+function toggleMastered() {
+  const id = state.tpl;
+  if (state.mastered.includes(id)) { state.mastered = state.mastered.filter(x => x !== id); toast('Đã bỏ đánh dấu thuộc lòng.', 'ℹ️'); }
+  else { state.mastered.push(id); toast('Chúc mừng! Bạn đã thuộc thêm 1 template!', '🎉'); confetti(110); }
+  persist();
+}
+
+function copyTemplate() {
+  const txt = cur().sentences.map(s => s.en).join('\n');
+  const ok = () => toast('Đã sao chép bài mẫu tiếng Anh!', '📋');
+  if (navigator.clipboard) navigator.clipboard.writeText(txt).then(ok, () => fallbackCopy(txt, ok));
+  else fallbackCopy(txt, ok);
+}
+function fallbackCopy(txt, cb) {
+  const ta = document.createElement('textarea'); ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta);
+  ta.select(); try { document.execCommand('copy'); cb(); } catch (e) {} ta.remove();
+}
+
+// =========================================================================
+// 5. MODE 1 — DỊCH SONG NGỮ
+// =========================================================================
+function enHtml(en, mask) {
+  return en.split(/(\[[^\]]+\])/).filter(Boolean).map(p =>
+    p.charAt(0) === '[' ? `<span class="ph">${esc(p)}</span>` : `<span class="${mask ? 'mask' : ''}">${esc(p)}</span>`).join('');
+}
+function renderMode1() {
+  const t = cur();
+  return `<div class="stack">
+    <div class="bar" style="margin-bottom:0">
+      <div><h3>Phân tách ${t.sentences.length} câu cốt lõi</h3><p>Chữ thường = học thuộc • <span class="ph">[ô vàng]</span> = điền theo đề • Chạm vào câu đang che để xem đáp án</p></div>
+      <div class="row">
+        <button class="btn sm ${state.hideVi ? 'sel' : ''}" onclick="state.hideVi=!state.hideVi;renderWorkspace()">${state.hideVi ? '👁️ Hiện nghĩa Việt' : '🙈 Che nghĩa Việt'}</button>
+        <button class="btn sm ${state.hideEn ? 'sel' : ''}" onclick="state.hideEn=!state.hideEn;renderWorkspace()">${state.hideEn ? '👁️ Hiện tiếng Anh' : '🙈 Che tiếng Anh'}</button>
+      </div>
+    </div>
+    ${t.pronounRule ? `<div class="callout purple"><span class="ic">🔄</span><div>${esc(t.pronounRule)}</div></div>` : ''}
+    <details class="tipbox"><summary>⚡ Bí kíp nhớ siêu tốc (chạm để mở)</summary><ul>
+      <li>Phần nền cố định là khung xương tiếng Anh cần gõ thuộc 100%.</li>
+      <li>Ô vàng <span class="ph">[ngoặc vuông]</span> là chỗ điền từ khóa theo đề — không cần học vẹt.</li>
+      <li>Email: đổi ngôi so với đề (<code>I/me/my</code> ↔ <code>you/your</code>).</li></ul></details>
+    ${t.sentences.map((s, i) => `
+      <article class="s-card">
+        <div class="s-top">
+          <span class="tag">Câu ${i + 1} • ${esc(s.part)}</span>
+          <div class="row" style="gap:6px">
+            <button class="ibtn" onclick="speakSentence(${i})" aria-label="Nghe câu này">🔊</button>
+            <button class="btn sm" onclick="jumpTyping(${i})">⌨️ Gõ câu này</button>
+          </div>
+        </div>
+        <div class="en" onclick="this.closest('.s-card').classList.toggle('reveal')">${enHtml(s.en, state.hideEn)}</div>
+        <div class="vi ${state.hideVi ? 'masked' : ''}" onclick="this.closest('.s-card').classList.toggle('reveal')">🇻🇳 ${esc(s.vi)}</div>
+        <div class="hook"><span>💡</span><span>${esc(s.hook)}</span></div>
+      </article>`).join('')}
+    <div class="row" style="justify-content:flex-end;margin-top:4px">
+      <button class="btn primary lg" onclick="markDone('${t.id}',1);switchMode(2)">Sang Bước 2: Luyện gõ từng câu →</button>
+    </div>
+  </div>`;
+}
+function jumpTyping(i) { state.m2Index = i; state.m2Input = ''; state.m2Start = null; state.m2Hint = false; switchMode(2); }
+
+// =========================================================================
+// 6. MODE 2 — GÕ TỪNG CÂU (cập nhật tại chỗ, không vẽ lại khi đang gõ)
+// =========================================================================
+function m2Cur() { const t = cur(); if (state.m2Index >= t.sentences.length) state.m2Index = 0; const s = t.sentences[state.m2Index]; return { t, s, target: fixedTarget(s.en) }; }
+const nCase = x => state.ignoreCase ? x.toLowerCase() : x;
+
+function renderMode2() {
+  const { t, s, target } = m2Cur(), total = t.sentences.length;
+  return `<div class="stack">
+    <div class="bar" style="margin-bottom:0">
+      <div class="row"><span class="tag" style="font-size:12px">Câu ${state.m2Index + 1}/${total}</span><span style="font-size:12.5px;color:var(--muted)">${esc(s.part)}</span></div>
+      <div class="row">
+        <button class="btn sm warn ${state.m2Blind ? 'on' : ''}" onclick="state.m2Blind=!state.m2Blind;renderWorkspace()">${state.m2Blind ? '🔥 Đang Việt→Anh (che mẫu)' : '🙈 Bật chế độ Việt→Anh'}</button>
+        <button class="ibtn" onclick="speak(m2Cur().target)" aria-label="Nghe câu mẫu">🔊</button>
+      </div>
+    </div>
+    <div class="chips" aria-label="Chọn câu">${t.sentences.map((_, i) => `<button class="sn ${i === state.m2Index ? 'on' : ''}" onclick="goM2(${i})" aria-label="Câu ${i + 1}">${i + 1}</button>`).join('')}</div>
+    <div class="progress"><i id="m2-bar" style="width:${(state.m2Index + 1) / total * 100}%"></i></div>
+    <div class="prompt">
+      <div class="lb">🇻🇳 Nghĩa tiếng Việt cần diễn đạt</div>
+      <div class="tx">${esc(s.vi)}</div>
+      <div class="nt">Hệ thống đã tự bỏ phần <span class="ph" style="font-size:11px">[ngoặc vuông]</span> — bạn chỉ cần gõ khung cố định.</div>
+    </div>
+    <div class="term mono" id="m2-term"></div>
+    <input id="m2-input" class="field mono" type="text" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next"
+      placeholder="Gõ câu tiếng Anh tại đây…" value="${esc(state.m2Input)}" oninput="m2OnInput(this.value)" onkeydown="m2Key(event)" />
+    <div class="foot">
+      <div class="meters"><span>Chính xác: <b id="m2-acc">100%</b></span><span>Tốc độ: <b id="m2-wpm">—</b></span><span>Kỷ lục: <b>${state.bestWpm} WPM</b></span></div>
+      <div class="row">
+        <label class="switch" title="Bỏ qua phân biệt chữ hoa / thường"><input type="checkbox" ${state.ignoreCase ? 'checked' : ''} onchange="state.ignoreCase=this.checked;store.set(K.i,this.checked);paintM2()" />Bỏ qua Hoa/thường</label>
+        <button class="btn sm" onclick="state.m2Hint=!state.m2Hint;paintM2()">💡 Gợi ý</button>
+        <button class="btn sm" onclick="stepM2(-1)">← Trước</button>
+        <button class="btn sm" onclick="stepM2(1)">Bỏ qua →</button>
+      </div>
+    </div>
+    <div class="hide-touch" style="font-size:12px;color:var(--soft)"><span class="kbd">Tab</span> bỏ qua câu • <span class="kbd">Esc</span> xóa ô gõ • Gõ đúng là tự chuyển câu</div>
+  </div>`;
+}
+
+function paintM2() {
+  const box = $('#m2-term'); if (!box) return;
+  const { target } = m2Cur(), typed = state.m2Input;
+  let html = '', ok = 0;
+  for (let i = 0; i < typed.length; i++) if (nCase(typed[i]) === nCase(target[i] || '')) ok++;
+  if (state.m2Blind) {
+    html = typed ? `<span class="c-ok">${esc(typed)}</span><span class="cursor"></span>` : `<span class="ghost">Nhìn nghĩa tiếng Việt ở trên rồi tự gõ câu tiếng Anh từ trí nhớ…</span>`;
+  } else {
+    for (let i = 0; i < target.length; i++) {
+      const ch = target[i] === ' ' ? '&nbsp;' : esc(target[i]);
+      if (i < typed.length) html += `<span class="${nCase(typed[i]) === nCase(target[i]) ? 'c-ok' : 'c-bad'}">${ch}</span>`;
+      else if (i === typed.length) html += `<span class="c-todo c-cur">${ch}</span>`;
+      else html += `<span class="c-todo">${ch}</span>`;
+    }
+  }
+  if (state.m2Hint) html += `<div class="hintline">💡 ${esc(target)}</div>`;
+  box.innerHTML = html;
+  const acc = typed.length ? Math.round(ok / typed.length * 100) : 100;
+  const a = $('#m2-acc'); a.textContent = acc + '%'; a.style.color = acc >= 90 ? 'var(--ok)' : 'var(--warn)';
+  if (state.m2Start && typed.length > 3) {
+    const mins = Math.max((Date.now() - state.m2Start) / 60000, .004);
+    $('#m2-wpm').textContent = Math.min(200, Math.round(ok / 5 / mins)) + ' WPM';
+  } else $('#m2-wpm').textContent = '—';
+}
+
+function m2OnInput(val) {
+  if (state.m2Lock) return;
+  if (!val.length) state.m2Start = null; else if (!state.m2Start) state.m2Start = Date.now();
+  state.m2Input = val; paintM2();
+  const { target } = m2Cur();
+  if (nCase(val.replace(/\s+$/, '')) === nCase(target)) completeM2(target);
+}
+function completeM2(target) {
+  state.m2Lock = true; chime(); touchStreak();
+  const mins = Math.max((Date.now() - (state.m2Start || Date.now())) / 60000, .004);
+  const wpm = Math.min(200, Math.max(10, Math.round(target.length / 5 / mins)));
+  if (wpm > state.bestWpm) { state.bestWpm = wpm; persist(); }
+  toast(`Chuẩn xác! ${wpm} WPM`, '⚡');
+  const t = cur(), last = state.m2Index >= t.sentences.length - 1;
+  setTimeout(() => {
+    if (last) { markDone(t.id, 2); confetti(90); toast('Tuyệt vời! Bạn đã gõ xong toàn bộ các câu!', '🎉'); state.m2Index = 0; }
+    else state.m2Index++;
+    Object.assign(state, { m2Input: '', m2Start: null, m2Hint: false, m2Lock: false });
+    if (state.mode === 2) renderWorkspace();
+  }, 380);
+}
+function m2Key(e) {
+  if (e.key === 'Tab') { e.preventDefault(); stepM2(e.shiftKey ? -1 : 1); }
+  else if (e.key === 'Escape') { state.m2Input = ''; state.m2Start = null; e.target.value = ''; paintM2(); }
+}
+function stepM2(d) { const n = cur().sentences.length; state.m2Index = (state.m2Index + d + n) % n; Object.assign(state, { m2Input: '', m2Start: null, m2Hint: false }); renderWorkspace(); }
+function goM2(i) { state.m2Index = i; Object.assign(state, { m2Input: '', m2Start: null, m2Hint: false }); renderWorkspace(); }
+
+// =========================================================================
+// 7. MODE 3 — ĐIỀN CỤM TỪ
+// =========================================================================
+const norm3 = s => (s || '').toLowerCase().replace(/[.,!?;:]/g, '').replace(/\s+/g, ' ').trim();
+function renderMode3() {
+  const t = cur();
+  const seg = txt => esc(txt).replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
+  const cards = t.sentences.map((s, si) => {
+    let pos = 0, html = '';
+    s.blanks.forEach((ph, bi) => {
+      const i = s.en.indexOf(ph, pos); if (i < 0) return;
+      html += seg(s.en.slice(pos, i));
+      const key = si + '_' + bi, v = state.m3Answers[key] || '', right = norm3(v) === norm3(ph);
+      const cls = state.m3Checked ? (right ? 'ok' : 'bad') : '';
+      const hint = state.m3Hints ? ph.replace(/[A-Za-z']+/g, w => w[0] + '…') : 'Gõ cụm tiếng Anh…';
+      html += `<span class="blank-w"><input class="blank ${cls}" value="${esc(v)}" placeholder="${esc(hint)}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next"
+        style="width:min(100%,${Math.min(Math.max(ph.length, 14) + 3, 62)}ch)" oninput="state.m3Answers['${key}']=this.value" onkeydown="m3Key(event,this)" />${state.m3Checked && !right ? `<span class="ans">✔ ${esc(ph)}</span>` : ''}</span>`;
+      pos = i + ph.length;
+    });
+    html += seg(s.en.slice(pos));
+    return `<div class="q-card"><div class="v">🇻🇳 ${esc(s.vi)}</div><div class="e">${html}</div></div>`;
+  }).join('');
+  let res = '';
+  if (state.m3Checked) {
+    const r = scoreM3();
+    res = `<div class="score ${r.pct >= PASS ? 'good' : ''}">${r.pct >= PASS ? '🏆' : '📝'} Đúng ${r.ok}/${r.total} cụm (${r.pct}%) ${r.pct >= PASS ? '— Xuất sắc!' : '— xem đáp án màu xanh để sửa nhé'}</div>`;
+  }
+  return `<div class="stack">
+    <div class="bar" style="margin-bottom:0">
+      <div><h3>Dịch Việt → Anh: điền cụm từ còn thiếu</h3><p>Nhìn nghĩa tiếng Việt, gõ lại các cụm cố định bị ẩn. Không cần chính xác hoa/thường hay dấu câu.</p></div>
+      <div class="row">
+        <label class="switch"><input type="checkbox" ${state.m3Hints ? 'checked' : ''} onchange="state.m3Hints=this.checked;renderWorkspace()" />Gợi ý chữ cái đầu</label>
+        <button class="btn sm" onclick="state.m3Answers={};state.m3Checked=false;renderWorkspace()">Làm lại</button>
+        <button class="btn sm primary" onclick="checkM3()">✓ Chấm điểm</button>
+      </div>
+    </div>
+    ${res}${cards}
+    <div class="row" style="justify-content:flex-end"><button class="btn primary lg" onclick="checkM3()">✓ Chấm điểm</button></div>
+  </div>`;
+}
+function m3Key(e, el) {
+  if (e.key !== 'Enter') return; e.preventDefault();
+  const all = [...document.querySelectorAll('.blank')], i = all.indexOf(el);
+  if (all[i + 1]) all[i + 1].focus(); else checkM3();
+}
+function scoreM3() {
+  let total = 0, ok = 0;
+  cur().sentences.forEach((s, si) => s.blanks.forEach((ph, bi) => { total++; if (norm3(state.m3Answers[si + '_' + bi]) === norm3(ph)) ok++; }));
+  return { total, ok, pct: Math.round(ok / total * 100) };
+}
+function checkM3() {
+  state.m3Checked = true; const r = scoreM3(); touchStreak();
+  if (r.pct >= PASS) { chime(); confetti(70); markDone(state.tpl, 3); toast(`Xuất sắc! ${r.ok}/${r.total} cụm đúng (${r.pct}%)`, '🏆'); }
+  else toast(`Đúng ${r.ok}/${r.total} cụm (${r.pct}%). Xem đáp án để sửa nhé!`, '📝');
+  renderWorkspace(); $('#workspace').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// =========================================================================
+// 8. MODE 4 — GÕ NGUYÊN BÀI (chấm theo thứ tự từ - LCS)
+// =========================================================================
+function renderMode4() {
+  const t = cur(), full = t.sentences.map(s => fixedTarget(s.en)).join(' '), r = state.m4Result;
+  return `<div class="stack">
+    <div class="bar" style="margin-bottom:0">
+      <div><h3>Thử thách cuối: nhìn dàn ý Việt → gõ nguyên bài tiếng Anh</h3><p>Đạt từ <b>${PASS}%</b> sẽ tự mở khóa huy hiệu <b>"Đã thuộc lòng"</b>. Chấm theo đúng thứ tự từ.</p></div>
+      <button class="btn primary" onclick="gradeM4()">🏆 Nộp bài &amp; chấm điểm</button>
+    </div>
+    <div class="two">
+      <div class="outline"><h4>🇻🇳 Dàn ý cần dịch &amp; gõ lại</h4><ol>${t.sentences.map(s => `<li>${esc(s.vi)}</li>`).join('')}</ol></div>
+      <div>
+        <textarea id="m4" class="field mono" placeholder="Gõ toàn bộ khung bài tiếng Anh tại đây (không cần gõ phần trong [ngoặc vuông])…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+          oninput="state.m4Input=this.value;$('#m4-count').textContent=wordsOf(this.value).length">${esc(state.m4Input)}</textarea>
+        <div class="foot" style="margin-top:8px"><span style="font-size:12px;color:var(--muted)">Đã gõ <b id="m4-count">${wordsOf(state.m4Input).length}</b> / ~${wordsOf(full).length} từ cố định</span>
+          <button class="btn sm" onclick="state.m4Input='';state.m4Result=null;renderWorkspace()">Xóa trắng</button></div>
+      </div>
+    </div>
+    ${r ? `<div class="result ${r.score >= PASS ? 'good' : ''}">
+      <div class="row" style="justify-content:space-between"><div><div class="big">${r.score}%</div><div style="font-size:13px;color:var(--muted)">${r.matched}/${r.total} từ đúng vị trí</div></div>
+      ${r.score >= PASS ? '<span class="badge" style="background:var(--ok);color:#fff">✅ ĐÃ THUỘC LÒNG</span>' : '<span class="badge">Cố lên, cần ≥ ' + PASS + '%</span>'}</div>
+      <div style="font-size:12.5px;font-weight:700;margin-top:12px">Đối chiếu: <span style="color:var(--ok)">xanh = đúng</span> • <span style="color:var(--bad)">đỏ = thiếu / sai</span></div>
+      <div class="diff mono">${r.diff}</div></div>` : ''}
+  </div>`;
+}
+function gradeM4() {
+  const t = cur(), full = t.sentences.map(s => fixedTarget(s.en)).join(' ');
+  const tok = full.split(/\s+/), tw = tok.map(w => w.toLowerCase().replace(/[.,?!;:"]/g, '')), uw = wordsOf(state.m4Input);
+  const n = tw.length, m = uw.length, dp = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) dp[i][j] = tw[i - 1] === uw[j - 1] ? dp[i - 1][j - 1] + 1 : Math.max(dp[i - 1][j], dp[i][j - 1]);
+  const hit = new Array(n).fill(false);
+  for (let i = n, j = m; i > 0 && j > 0;) {
+    if (tw[i - 1] === uw[j - 1]) { hit[i - 1] = true; i--; j--; } else if (dp[i - 1][j] >= dp[i][j - 1]) i--; else j--;
+  }
+  const matched = dp[n][m], score = Math.min(100, Math.round(matched / n * 100));
+  state.m4Result = { score, matched, total: n, diff: tok.map((w, i) => `<span class="${hit[i] ? 'm' : 'x'}">${esc(w)}</span>`).join(' ') };
+  touchStreak();
+  if (score >= PASS) {
+    chime(); confetti(160); markDone(t.id, 4);
+    if (!state.mastered.includes(t.id)) { state.mastered.push(t.id); persist(); }
+    toast(`Chúc mừng! ${score}% — đã thuộc lòng template này!`, '🏆');
+  } else toast(`Bạn đạt ${score}%. Cố đạt ≥ ${PASS}% nhé!`, '💪');
+  renderWorkspace();
+  setTimeout(() => document.querySelector('.result')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
+}
+
+// =========================================================================
+// 9. RENDER CHÍNH • MODAL • TẢI FILE
+// =========================================================================
+function renderWorkspace() {
+  const w = $('#workspace');
+  const fn = [null, renderMode1, renderMode2, renderMode3, renderMode4][state.mode];
+  w.innerHTML = fn();
+  w.style.animation = 'none'; void w.offsetHeight; w.style.animation = '';
+  if (state.mode === 2) { paintM2(); const el = $('#m2-input'); if (el) { el.focus({ preventScroll: true }); el.setSelectionRange(el.value.length, el.value.length); } }
+}
+
+function openModal() { $('#modal').classList.add('open'); }
+function closeModal() { $('#modal').classList.remove('open'); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.altKey && /^[1-4]$/.test(e.key)) { e.preventDefault(); switchMode(+e.key); }
+});
+
+async function downloadHtml() {
+  let html;
+  try { const r = await fetch(location.href, { cache: 'no-store' }); if (!r.ok) throw 0; html = await r.text(); }
+  catch (e) { html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML; }
+  const url = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
+  const a = document.createElement('a'); a.href = url; a.download = 'index.html'; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  toast('Đã tải xuống index.html!', '📥');
+}
+
+document.addEventListener("visibilitychange",()=>{document.querySelector(".aurora")?.style.setProperty("display",document.hidden?"none":"")});
+// Khởi động
+$('#btn-theme').textContent = document.documentElement.dataset.theme === 'dark' ? '☀️' : '🌙';
+updateStats(); renderSidebar(); renderHead(); renderWorkspace();
+
+// Offline: đăng ký service worker (khi chạy qua http/https)
+if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>
