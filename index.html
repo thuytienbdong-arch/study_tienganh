@@ -337,6 +337,19 @@
   .work, .card, .tpl, .stat { will-change: auto; }
   @media (hover:none) { .aurora i { animation: none; } }
   @media (max-width: 767px) { .topbar { backdrop-filter: blur(10px); } }
+
+  #auth { position: fixed; inset: 0; z-index: 90; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(60,45,110,.35); backdrop-filter: blur(8px); }
+  #auth.open { display: flex; animation: fade .2s ease; }
+  #auth .box { width: 100%; max-width: 400px; max-height: 92dvh; overflow-y: auto; padding: 24px; border-radius: 28px; background: var(--card-solid); border: 1px solid var(--line); box-shadow: var(--shadow); text-align: center; }
+  #auth h2 { margin: 6px 0 4px; font-size: 19px; font-weight: 800; } #auth p { margin: 0 0 14px; font-size: 13px; color: var(--muted); }
+  #auth .pf { display: flex; align-items: center; gap: 12px; width: 100%; padding: 11px 14px; margin-bottom: 8px; border-radius: 16px; border: 1px solid var(--line); background: var(--p-soft); text-align: left; font-weight: 700; transition: transform .15s; }
+  #auth .pf:hover { transform: translateY(-2px); } #auth .pf .av { font-size: 26px; } #auth .pf small { margin-left: auto; color: var(--soft); }
+  #auth input.in { width: 100%; padding: 12px 14px; margin: 6px 0; border-radius: 14px; border: 1px solid var(--line); background: var(--bg); text-align: center; font-size: 15px; }
+  #auth .avs { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 8px 0; }
+  #auth .avs button { font-size: 24px; width: 44px; height: 44px; border-radius: 14px; border: 2px solid transparent; background: var(--p-soft); }
+  #auth .avs button.on { border-color: var(--p); }
+  #auth .row2 { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+  #auth .err { color: var(--bad); font-size: 12.5px; min-height: 18px; font-weight: 600; }
   ::selection { background: #e6dcff; }
   ::-webkit-scrollbar { width: 8px; height: 8px } ::-webkit-scrollbar-thumb { background: #d6caff; border-radius: 8px }
 </style>
@@ -360,6 +373,7 @@
       <span class="stat" title="Chuỗi ngày học liên tục">🔥 <b id="st-s">0</b><span class="lbl"> ngày</span></span>
       <span class="stat" title="Kỷ lục tốc độ gõ">⚡ <b id="st-w">0</b><span class="lbl"> WPM</span></span>
     </div>
+    <button class="icon-btn" onclick="openAuth()" id="btn-acc" aria-label="Tài khoản người học" title="Tài khoản">👤</button>
     <button class="icon-btn" onclick="toggleTheme()" id="btn-theme" aria-label="Đổi giao diện sáng/tối" title="Sáng / Tối">🌙</button>
     <button class="icon-btn" onclick="openModal()" aria-label="Tải về &amp; đưa lên GitHub" title="Tải về &amp; đưa lên GitHub">⬇️</button>
   </div>
@@ -572,9 +586,17 @@ const TEMPLATES = [
 // =========================================================================
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// ---- Hồ sơ người học (lưu trên thiết bị, tự ghi nhớ) ----
+const PF = (() => {
+  const raw = k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } };
+  const list = raw('vstep_b1_profiles') || [];
+  const id = raw('vstep_b1_cur');
+  return { list, cur: list.find(p => p.id === id) || null };
+})();
+const sfx = PF.cur ? (PF.cur.legacy ? '' : '__' + PF.cur.id) : '__guest';
 const store = {
-  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
-  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  get(k, d) { try { const v = localStorage.getItem(k === 'vstep_b1_theme' ? k : k + sfx); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k === 'vstep_b1_theme' ? k : k + sfx, JSON.stringify(v)); } catch (e) {} }
 };
 // Giữ nguyên key cũ để không mất tiến độ đã học
 const K = { m: 'vstep_b1_mastered', w: 'vstep_b1_best_wpm', d: 'vstep_b1_done', s: 'vstep_b1_streak', i: 'vstep_b1_ignorecase', l: 'vstep_b1_last', t: 'vstep_b1_theme' };
@@ -1023,6 +1045,68 @@ document.addEventListener("visibilitychange",()=>{document.querySelector(".auror
 // Khởi động
 $('#btn-theme').textContent = document.documentElement.dataset.theme === 'dark' ? '☀️' : '🌙';
 updateStats(); renderSidebar(); renderHead(); renderWorkspace();
+
+// =========================================================================
+// ĐĂNG NHẬP • GHI NHỚ NGƯỜI HỌC (lưu trên thiết bị)
+// =========================================================================
+const AVS = ['🦊','🐼','🐰','🐱','🦄','🐳','🌸','🍓'];
+let authSel = AVS[0], authMode = 'list';
+const pfHash = x => { let h = 5381; for (const c of x) h = ((h << 5) + h + c.charCodeAt(0)) >>> 0; return h.toString(36) + x.length; };
+function savePF() { try { localStorage.setItem('vstep_b1_profiles', JSON.stringify(PF.list)); } catch (e) {} }
+function loginAs(id) { try { localStorage.setItem('vstep_b1_cur', JSON.stringify(id)); } catch (e) {} location.reload(); }
+function doLogout() { try { localStorage.removeItem('vstep_b1_cur'); } catch (e) {} location.reload(); }
+function closeAuth() { if (PF.cur) $('#auth').classList.remove('open'); }
+function openAuth(mode) { authMode = mode || (PF.cur || PF.list.length ? 'list' : 'new'); drawAuth(); $('#auth').classList.add('open'); }
+function drawAuth() {
+  const a = $('#auth'); let h = '<div class="box">';
+  if (authMode === 'new') {
+    h += `<div style="font-size:40px">${authSel}</div><h2>Tạo hồ sơ người học</h2><p>Tiến độ, chuỗi ngày và điểm sẽ được ghi nhớ riêng cho bạn.</p>
+      <input class="in" id="au-name" maxlength="20" placeholder="Tên của bạn" autocomplete="off" />
+      <div class="avs">${AVS.map(v => `<button class="${v === authSel ? 'on' : ''}" onclick="authSel='${v}';drawAuth()">${v}</button>`).join('')}</div>
+      <input class="in" id="au-pin" maxlength="4" inputmode="numeric" placeholder="PIN 4 số (không bắt buộc)" />
+      <div class="err" id="au-err"></div>
+      <div class="row2"><button class="btn primary" onclick="createPF()">Bắt đầu học 🚀</button>${PF.list.length ? '<button class="btn" onclick="authMode=\'list\';drawAuth()">Quay lại</button>' : ''}</div>`;
+  } else if (authMode === 'pin') {
+    const p = PF.list.find(x => x.id === authSel);
+    h += `<div style="font-size:40px">${p.av}</div><h2>Chào ${esc(p.name)}</h2><p>Nhập PIN để vào</p>
+      <input class="in" id="au-pin" maxlength="4" inputmode="numeric" placeholder="••••" type="password" onkeydown="if(event.key==='Enter')checkPin()" />
+      <div class="err" id="au-err"></div><div class="row2"><button class="btn primary" onclick="checkPin()">Vào học</button><button class="btn" onclick="authMode='list';drawAuth()">Quay lại</button></div>`;
+  } else {
+    h += `<div style="font-size:40px">${PF.cur ? PF.cur.av : '👋'}</div><h2>${PF.cur ? 'Xin chào, ' + esc(PF.cur.name) : 'Ai đang học đây?'}</h2><p>${PF.cur ? 'Đổi người học hoặc quản lý tiến độ' : 'Chọn hồ sơ để tiếp tục — máy sẽ nhớ bạn'}</p>
+      ${PF.list.map(p => `<button class="pf" onclick="pickPF('${p.id}')"><span class="av">${p.av}</span>${esc(p.name)}<small>${p.pin ? '🔒' : ''}${PF.cur && PF.cur.id === p.id ? ' đang học' : ''}</small></button>`).join('')}
+      <button class="pf" onclick="authMode='new';drawAuth()"><span class="av">➕</span>Thêm người học</button>
+      ${PF.cur ? `<div class="row2"><button class="btn" onclick="exportPF()">💾 Sao lưu</button><button class="btn" onclick="document.getElementById('au-file').click()">📂 Khôi phục</button><button class="btn" onclick="doLogout()">🚪 Đăng xuất</button></div>
+      <input type="file" id="au-file" accept=".json" hidden onchange="importPF(this)" /><div class="row2"><button class="btn primary" onclick="closeAuth()">Đóng</button></div>` : ''}`;
+  }
+  a.innerHTML = h + '</div>';
+}
+function createPF() {
+  const name = $('#au-name').value.trim(), pin = $('#au-pin').value.trim(), err = $('#au-err');
+  if (!name) { err.textContent = 'Hãy nhập tên nhé.'; return; }
+  if (pin && !/^\d{4}$/.test(pin)) { err.textContent = 'PIN gồm đúng 4 chữ số.'; return; }
+  if (PF.list.some(p => p.name.toLowerCase() === name.toLowerCase())) { err.textContent = 'Tên này đã có.'; return; }
+  const hasOld = !PF.list.length && ['mastered', 'done', 'streak', 'best_wpm'].some(k => localStorage.getItem('vstep_b1_' + k) !== null);
+  const p = { id: 'u' + Date.now().toString(36), name, av: authSel, pin: pin ? pfHash(pin) : '', legacy: hasOld };
+  PF.list.push(p); savePF(); loginAs(p.id);
+}
+function pickPF(id) { const p = PF.list.find(x => x.id === id); if (PF.cur && PF.cur.id === id) return closeAuth(); if (p.pin) { authSel = id; authMode = 'pin'; drawAuth(); } else loginAs(id); }
+function checkPin() { const p = PF.list.find(x => x.id === authSel); if (pfHash($('#au-pin').value) === p.pin) loginAs(p.id); else { $('#au-err').textContent = 'Sai PIN, thử lại nhé.'; } }
+function exportPF() {
+  const o = { app: 'vstep-b1', name: PF.cur.name, data: {} };
+  for (const k of ['m', 'w', 'd', 's', 'i', 'l']) o.data[K[k]] = store.get(K[k], null);
+  const u = URL.createObjectURL(new Blob([JSON.stringify(o)], { type: 'application/json' }));
+  const a = document.createElement('a'); a.href = u; a.download = 'vstep-b1-' + PF.cur.name + '.json'; a.click(); setTimeout(() => URL.revokeObjectURL(u), 1500);
+  toast('Đã sao lưu tiến độ!', '💾');
+}
+function importPF(inp) {
+  const f = inp.files[0]; if (!f) return; const r = new FileReader();
+  r.onload = () => { try { const o = JSON.parse(r.result); if (o.app !== 'vstep-b1') throw 0; for (const k in o.data) if (o.data[k] !== null) store.set(k, o.data[k]); location.reload(); } catch (e) { toast('File sao lưu không hợp lệ', '⚠️'); } };
+  r.readAsText(f);
+}
+document.body.insertAdjacentHTML('beforeend', '<div id="auth" role="dialog" aria-modal="true"></div>');
+$('#btn-acc').textContent = PF.cur ? PF.cur.av : '👤';
+if (!PF.cur) openAuth();
+else if (!sessionStorage.getItem('vstep_greeted')) { try { sessionStorage.setItem('vstep_greeted', '1'); } catch (e) {} setTimeout(() => toast('Chào mừng quay lại, ' + PF.cur.name + '!', PF.cur.av), 400); }
 
 // Offline: đăng ký service worker (khi chạy qua http/https)
 if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("sw.js").catch(()=>{});
